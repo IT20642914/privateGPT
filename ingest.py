@@ -25,7 +25,7 @@ from langchain.vectorstores import Chroma
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.docstore.document import Document
 
-if not load_dotenv():
+if not load_dotenv("/content/.env"):
     print("Could not load .env file or it is empty. Please check if it exists and is readable.")
     exit(1)
 
@@ -35,7 +35,8 @@ from chromadb.api.segment import API
 
 # Load environment variables
 persist_directory = os.environ.get('PERSIST_DIRECTORY')
-source_directory = os.environ.get('SOURCE_DIRECTORY', 'source_documents')
+# source_directory = os.environ.get('SOURCE_DIRECTORY', 'source_documents')
+source_directory = os.environ.get('SOURCE_DIRECTORY', '/content/privateGPT/source_documents')
 embeddings_model_name = os.environ.get('EMBEDDINGS_MODEL_NAME')
 chunk_size = 500
 chunk_overlap = 50
